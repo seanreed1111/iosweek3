@@ -16,7 +16,7 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     items = [[NSMutableArray alloc] init];
-    for(int i=0;i< 100; i++){
+    for(int i=0;i< 10; i++){
         NSString *data = [[NSString alloc] initWithFormat:@"Row: %d",i+1];
         [items addObject:data];
     }
@@ -24,6 +24,7 @@
     return self;
 }
 
+// implements the UITableViewDataSource protocol
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -45,4 +46,20 @@
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = @"title1";
+    return title;
+}
 @end
