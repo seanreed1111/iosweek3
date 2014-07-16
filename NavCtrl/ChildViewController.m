@@ -16,6 +16,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    NSLog(@"\nChildViewController: initWithStyle:(UITableViewStyle)style");
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -25,6 +26,7 @@
 
 - (void)viewDidLoad
 {
+        NSLog(@"\nChildViewController: viewDidLoad");
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -34,7 +36,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
+        NSLog(@"\nChildViewController: viewWillAppear: animated:");
     
     [super viewWillAppear:animated];
     
@@ -50,6 +54,7 @@
 
 - (void)didReceiveMemoryWarning
 {
+        NSLog(@"\nChildViewController: didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -58,6 +63,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+        NSLog(@"\nChildViewController:(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView");
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
@@ -65,6 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+        NSLog(@"\nChildViewController:(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.products count];
@@ -72,6 +79,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+            NSLog(@"\nChildViewController:(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {

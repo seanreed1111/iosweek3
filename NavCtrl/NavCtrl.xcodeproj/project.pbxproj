@@ -125,8 +125,6 @@
 		48A656BA18163BF200746D36 /* NavCtrl */ = {
 			isa = PBXGroup;
 			children = (
-				48A656C318163BF200746D36 /* qcdDemoAppDelegate.h */,
-				48A656C418163BF200746D36 /* qcdDemoAppDelegate.m */,
 				48A656C618163BF200746D36 /* Images.xcassets */,
 				48A656BB18163BF200746D36 /* Supporting Files */,
 			);
@@ -136,6 +134,8 @@
 		48A656BB18163BF200746D36 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				48A656C318163BF200746D36 /* qcdDemoAppDelegate.h */,
+				48A656C418163BF200746D36 /* qcdDemoAppDelegate.m */,
 				48A656ED1816468000746D36 /* Sunflower.gif */,
 				48A656BC18163BF200746D36 /* NavCtrl-Info.plist */,
 				48A656BD18163BF200746D36 /* InfoPlist.strings */,

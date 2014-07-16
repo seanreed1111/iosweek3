@@ -17,6 +17,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    NSLog(@"initWithStyle:(UITableViewStyle)style");
     self = [super initWithStyle:style];
     
     if (self) {
@@ -29,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"viewDidLoad called");
+    NSLog(@"viewDidLoad");
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -56,6 +57,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+        NSLog(@"numberOfSectionsInTableView:(UITableView *)tableView");
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
@@ -63,6 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+            NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.companyList count];
@@ -70,6 +73,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -130,7 +134,7 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+            NSLog(@"Selected ChildView - now push the proper view to application - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
 
     if (indexPath.row ==0)
     {
