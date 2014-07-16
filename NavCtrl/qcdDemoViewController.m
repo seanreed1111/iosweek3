@@ -39,8 +39,8 @@
     
     
     self.companyList = [[NSArray alloc]
-                       initWithObjects:@"Apple mobile devices",
-                       @"Samsung mobile devices", nil];
+                       initWithObjects:@"Apple Mobile Devices",
+                       @"Samsung Mobile Devices", @"Blackberry Mobile Devices",@"Microsoft Mobile Devices",@"Nokia Mobile Devices",nil];
     self.title = @"Mobile device makers";
     
     
@@ -58,7 +58,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
         NSLog(@"numberOfSectionsInTableView:(UITableView *)tableView");
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }
@@ -132,16 +132,14 @@
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
             NSLog(@"Selected ChildView - now push the proper view to application - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
 
-    if (indexPath.row ==0)
-    {
-        self.childVC.title = @"Apple mobile devices";
-    } else {
-        self.childVC.title = @"Samsung mobile devices";
-    }
+    
+    self.childVC.title = self.companyList[indexPath.row];
+    
     [self.navigationController
      pushViewController:self.childVC
      animated:YES];

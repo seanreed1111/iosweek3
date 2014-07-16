@@ -17,6 +17,7 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     NSLog(@"\nChildViewController: initWithStyle:(UITableViewStyle)style");
+    
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -42,13 +43,41 @@
     
     [super viewWillAppear:animated];
     
-    if ([self.title isEqualToString:@"Apple mobile devices"]) {
+    if ([self.title isEqualToString:@"Apple Mobile Devices"])
+    {
         self.products = [[NSArray alloc ]
                  initWithObjects:@"iPad", @"iPod Touch",@"iPhone", nil];
-    } else {
+    }
+    else if ([self.title isEqualToString:@"Samsung Mobile Devices"])
+    {
         self.products = [[NSArray alloc ]
                  initWithObjects:@"Galaxy S4", @"Galaxy Note", @"Galaxy Tab", nil];
     }
+    else if ([self.title isEqualToString:@"Microsoft Mobile Devices"])
+    {
+        self.products = [[NSArray alloc ]
+                         initWithObjects:@"Microsoft1", @"Microsoft2", @"Microsoft3", nil];
+    }
+
+    else if ([self.title isEqualToString:@"Blackberry Mobile Devices"])
+    {
+        self.products = [[NSArray alloc ]
+                         initWithObjects:@"Blackberry1", @"Blackberry2", @"Blackberry3", nil];
+    }
+
+    else if ([self.title isEqualToString:@"Nokia Mobile Devices"])
+    {
+        self.products = [[NSArray alloc ]
+                         initWithObjects:@"Nokia1", @"Nokia2", @"Nokia3", nil];
+    }
+    else
+    {
+        self.products = @[@"", @"", @""];
+    }
+
+    
+    
+    
     [self.tableView reloadData];
 }
 

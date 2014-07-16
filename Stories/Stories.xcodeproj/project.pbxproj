@@ -112,8 +112,6 @@
 		1462829A1976F9E30031F7EB /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				146282A31976F9E30031F7EB /* agstemAppDelegate.h */,
-				146282A41976F9E30031F7EB /* agstemAppDelegate.m */,
 				146282A61976F9E30031F7EB /* Main.storyboard */,
 				146282A91976F9E30031F7EB /* agstemViewController.h */,
 				146282AA1976F9E30031F7EB /* agstemViewController.m */,
@@ -126,6 +124,8 @@
 		1462829B1976F9E30031F7EB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				146282A31976F9E30031F7EB /* agstemAppDelegate.h */,
+				146282A41976F9E30031F7EB /* agstemAppDelegate.m */,
 				1462829C1976F9E30031F7EB /* Stories-Info.plist */,
 				1462829D1976F9E30031F7EB /* InfoPlist.strings */,
 				146282A01976F9E30031F7EB /* main.m */,
