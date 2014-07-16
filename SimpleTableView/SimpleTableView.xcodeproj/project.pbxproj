@@ -24,6 +24,7 @@
 		14312CE6196F47A500C9A634 /* thai_shrimp_cake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14312CD6196F47A500C9A634 /* thai_shrimp_cake.jpg */; };
 		14312CE7196F47A500C9A634 /* vegetable_curry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14312CD7196F47A500C9A634 /* vegetable_curry.jpg */; };
 		14312CE8196F47A500C9A634 /* white_chocolate_donut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14312CD8196F47A500C9A634 /* white_chocolate_donut.jpg */; };
+		146282871976E3C50031F7EB /* universe-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 146282861976E3C50031F7EB /* universe-icon.jpg */; };
 		48C6838B18145834008E9945 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C6838A18145834008E9945 /* UIKit.framework */; };
 		48C6838D18145834008E9945 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C6838C18145834008E9945 /* Foundation.framework */; };
 		48C6838F18145834008E9945 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C6838E18145834008E9945 /* CoreGraphics.framework */; };
@@ -55,6 +56,7 @@
 		14312CD6196F47A500C9A634 /* thai_shrimp_cake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thai_shrimp_cake.jpg; sourceTree = "<group>"; };
 		14312CD7196F47A500C9A634 /* vegetable_curry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vegetable_curry.jpg; sourceTree = "<group>"; };
 		14312CD8196F47A500C9A634 /* white_chocolate_donut.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_chocolate_donut.jpg; sourceTree = "<group>"; };
+		146282861976E3C50031F7EB /* universe-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "universe-icon.jpg"; path = "../universe-icon.jpg"; sourceTree = "<group>"; };
 		48C6838718145834008E9945 /* SimpleTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C6838A18145834008E9945 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		48C6838C18145834008E9945 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,12 +143,11 @@
 		48C6839018145834008E9945 /* SimpleTableView */ = {
 			isa = PBXGroup;
 			children = (
-				48C6839918145834008E9945 /* DEMOAppDelegate.h */,
-				48C6839A18145834008E9945 /* DEMOAppDelegate.m */,
 				14312CC6196F16BA00C9A634 /* README-SimpleTableView.txt */,
 				48C6839118145834008E9945 /* Supporting Files */,
 				48C683A71814589C008E9945 /* DEMOSimpleTableViewController.h */,
 				48C683A81814589C008E9945 /* DEMOSimpleTableViewController.m */,
+				146282861976E3C50031F7EB /* universe-icon.jpg */,
 				48C683AA18146833008E9945 /* Sunflower.gif */,
 			);
 			path = SimpleTableView;
@@ -155,6 +156,8 @@
 		48C6839118145834008E9945 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				48C6839918145834008E9945 /* DEMOAppDelegate.h */,
+				48C6839A18145834008E9945 /* DEMOAppDelegate.m */,
 				48C6839218145834008E9945 /* SimpleTableView-Info.plist */,
 				48C6839318145834008E9945 /* InfoPlist.strings */,
 				48C6839618145834008E9945 /* main.m */,
@@ -237,6 +240,7 @@
 				14312CC7196F16BA00C9A634 /* README-SimpleTableView.txt in Resources */,
 				48C683AB18146833008E9945 /* Sunflower.gif in Resources */,
 				14312CD9196F47A500C9A634 /* angry_birds_cake.jpg in Resources */,
+				146282871976E3C50031F7EB /* universe-icon.jpg in Resources */,
 				14312CE8196F47A500C9A634 /* white_chocolate_donut.jpg in Resources */,
 				14312CE6196F47A500C9A634 /* thai_shrimp_cake.jpg in Resources */,
 				14312CDB196F47A500C9A634 /* egg_benedict.jpg in Resources */,

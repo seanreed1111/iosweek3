@@ -17,7 +17,7 @@
     
     items = [[NSMutableArray alloc] init];
     for(int i=0;i< 10; i++){
-        NSString *data = [[NSString alloc] initWithFormat:@"Row: %d",i+1];
+        NSString *data = [[NSString alloc] initWithFormat:@"This is row: %d",i+1];
         [items addObject:data];
     }
     
@@ -42,7 +42,7 @@
     }
     
     [[cell textLabel] setText: [items objectAtIndex:[indexPath row]]];
-    [[cell imageView] setImage: [UIImage imageNamed:@"Sunflower.gif"]];
+    [[cell imageView] setImage: [UIImage imageNamed:@"universe-icon.jpg"]];
     return cell;
 }
 
@@ -59,7 +59,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *title = @"title1";
+    NSString *title = @"Title1";
     return title;
 }
 @end
