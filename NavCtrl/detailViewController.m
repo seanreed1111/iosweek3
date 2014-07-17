@@ -20,24 +20,18 @@
         
         //Added by Aditya
         [self.view addSubview:self.webView];
-        
     }
-    self.url = [NSURL URLWithString:self.title];
-
-    
-    self.webView.scalesPageToFit = YES;
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.url = [NSURL URLWithString:self.title];
     
-    NSLog(@"Title is %@", self.title);
+    self.webView.scalesPageToFit = YES;
     
-    
-    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+    NSLog(@"ViewWillAppear title is %@", self.title);
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
