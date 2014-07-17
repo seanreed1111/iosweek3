@@ -15,6 +15,6 @@
 @property (nonatomic, copy) NSArray *companyList;
 @property (nonatomic, copy) NSArray *companyImageNames;
 
-@property (nonatomic, retain) IBOutlet  ChildViewController * childVC;
+@property (nonatomic, strong) IBOutlet  ChildViewController * childVC;
 
 @end

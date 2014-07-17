@@ -8,13 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class detailViewController;
+
 @interface ChildViewController : UITableViewController
 
+@property (nonatomic, strong) IBOutlet detailViewController * detailVC;
+
 @property (nonatomic, copy) NSMutableArray *products; // from original version of file
+
 @property (nonatomic, copy) NSArray *companyNames;
 @property (nonatomic, copy) NSArray *productNames;
 @property (nonatomic, copy) NSArray *companyImageNames;
-@property (nonatomic, copy) NSDictionary *dict;
-@property (nonatomic, copy) NSDictionary *imageDict;
 
+@property (nonatomic, copy) NSArray *companyURLs;
+
+@property (nonatomic, copy) NSDictionary *imageDict;
+@property (nonatomic, copy) NSDictionary *urlDict;
+@property (nonatomic, copy) NSDictionary *dict;
 @end

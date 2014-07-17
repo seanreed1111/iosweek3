@@ -7,6 +7,7 @@
 //
 
 #import "ChildViewController.h"
+#import "detailViewController.h"
 
 @interface ChildViewController ()
 
@@ -46,6 +47,9 @@
     {
         self.companyImageNames = @[@"apple-logo.jpeg", @"samsung-logo.png", @"Blackberry-logo.jpg", @"microsoft-logo.png", @"nokia-logo.jpg"];
         
+        self.companyURLs = @[@"http://apple.com",@"http://www.samsung.com/us/",@"http://us.blackberry.com/",@"http://www.windowsphone.com/en-US",@"http://www.nokia.com/us-en/phones/"];
+        
+        
         self.companyNames = @[@"Apple Mobile Devices",
                               @"Samsung Mobile Devices",
                               @"Blackberry Mobile Devices",
@@ -59,6 +63,8 @@
         self.dict = [NSDictionary dictionaryWithObjects:self.productNames forKeys:self.companyNames];
         
         self.imageDict = [NSDictionary dictionaryWithObjects:self.companyImageNames forKeys:self.companyNames];
+        
+        self.urlDict = [NSDictionary dictionaryWithObjects:self.companyURLs forKeys:self.companyNames];
     }
     
     NSLog(@"Dictionary is %@", self.dict);
@@ -109,12 +115,35 @@
     
     // Configure the cell...
     
-    cell.textLabel.text = [self.products objectAtIndex:
-                           [indexPath row]];
-//    cell.imageView.image = [UIImage imageNamed:[self.companyImageNames objectAtIndex:[indexPath row] ]]; //this isn't quite right
+    cell.textLabel.text = [self.products objectAtIndex:[indexPath row]];
+
     
     cell.imageView.image = [UIImage imageNamed:[self.imageDict objectForKey:self.title]];
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+                NSLog(@"\nChildViewController:(UITableView *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
+    
+    if(!self.detailVC)
+    {
+        self.detailVC = [[detailViewController  alloc]init];
+    }
+    self.detailVC.title = [self.urlDict objectForKey:self.title];
+    
+    
+    NSLog(@"\n\nTitle of next screen will be %@", self.detailVC.title);
+    
+    // Pass the selected object to the new view controller.
+    
+    [self.navigationController pushViewController:self.detailVC animated:YES];
+    
+    NSLog(@"\nself.navigationcontroller is %@", self.navigationController);
+
 }
 
 /*
@@ -151,27 +180,13 @@
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the item to be re-orderable.
+
     return YES;
 }
 */
 
-/*
-#pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
 
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
- 
- */
+
 
 @end
