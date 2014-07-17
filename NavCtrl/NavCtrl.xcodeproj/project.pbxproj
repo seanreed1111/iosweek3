@@ -28,9 +28,7 @@
 		48A656D818163BF200746D36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48A656D618163BF200746D36 /* InfoPlist.strings */; };
 		48A656DA18163BF200746D36 /* NavCtrlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A656D918163BF200746D36 /* NavCtrlTests.m */; };
 		48A656E618163C1B00746D36 /* qcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A656E418163C1B00746D36 /* qcdDemoViewController.m */; };
-		48A656E718163C1B00746D36 /* qcdDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48A656E518163C1B00746D36 /* qcdDemoViewController.xib */; };
 		48A656EB18163F8700746D36 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A656E918163F8700746D36 /* ChildViewController.m */; };
-		48A656EC18163F8700746D36 /* ChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48A656EA18163F8700746D36 /* ChildViewController.xib */; };
 		48A656EE1816468000746D36 /* Sunflower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 48A656ED1816468000746D36 /* Sunflower.gif */; };
 /* End PBXBuildFile section */
 
@@ -72,10 +70,8 @@
 		48A656D918163BF200746D36 /* NavCtrlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavCtrlTests.m; sourceTree = "<group>"; };
 		48A656E318163C1B00746D36 /* qcdDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qcdDemoViewController.h; sourceTree = "<group>"; };
 		48A656E418163C1B00746D36 /* qcdDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qcdDemoViewController.m; sourceTree = "<group>"; };
-		48A656E518163C1B00746D36 /* qcdDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = qcdDemoViewController.xib; sourceTree = "<group>"; };
 		48A656E818163F8700746D36 /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
 		48A656E918163F8700746D36 /* ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
-		48A656EA18163F8700746D36 /* ChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildViewController.xib; sourceTree = "<group>"; };
 		48A656ED1816468000746D36 /* Sunflower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Sunflower.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,8 +109,6 @@
 				48A656E918163F8700746D36 /* ChildViewController.m */,
 				147D90D3197853400002CE7C /* detailViewController.h */,
 				147D90D4197853400002CE7C /* detailViewController.m */,
-				48A656EA18163F8700746D36 /* ChildViewController.xib */,
-				48A656E518163C1B00746D36 /* qcdDemoViewController.xib */,
 				48A656BA18163BF200746D36 /* NavCtrl */,
 				48A656D318163BF200746D36 /* NavCtrlTests */,
 				48A656B318163BF200746D36 /* Frameworks */,
@@ -268,14 +262,12 @@
 				147D90CC197820EE0002CE7C /* Blackberry-logo.jpg in Resources */,
 				147D90CE197821160002CE7C /* microsoft-logo.png in Resources */,
 				48A656EE1816468000746D36 /* Sunflower.gif in Resources */,
-				48A656E718163C1B00746D36 /* qcdDemoViewController.xib in Resources */,
 				48A656BF18163BF200746D36 /* InfoPlist.strings in Resources */,
 				146282CA1976FBD30031F7EB /* NavCtrl_readme.txt in Resources */,
 				147D90C8197820820002CE7C /* apple-logo.jpeg in Resources */,
 				147D90CA1978209E0002CE7C /* blackberry-logo.png in Resources */,
 				147D90D01978212E0002CE7C /* nokia-logo.jpg in Resources */,
 				48A656C718163BF200746D36 /* Images.xcassets in Resources */,
-				48A656EC18163F8700746D36 /* ChildViewController.xib in Resources */,
 				147D90D2197821740002CE7C /* samsung-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,22 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    if(!self.webView)
+    {
+     
+        //Added by Aditya
+        self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+        
+        //Added by Aditya
+        [self.view addSubview:self.webView];
+        
+    }
+    self.url = [NSURL URLWithString:self.title];
 
+    
+    self.webView.scalesPageToFit = YES;
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -21,18 +36,7 @@
     
     NSLog(@"Title is %@", self.title);
     
-    self.url = [NSURL URLWithString:self.title];
     
-    
-    if(!self.webView)
-    {
-        self.webView = [[UIWebView alloc]init];
-
-    }
-    
-    self.webView.scalesPageToFit = YES;
-    
-        [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
     
 }
 
