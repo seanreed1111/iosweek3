@@ -42,41 +42,32 @@
         NSLog(@"\nChildViewController: viewWillAppear: animated:");
     
     [super viewWillAppear:animated];
-    
-    if ([self.title isEqualToString:@"Apple Mobile Devices"])
+    if (!self.dict)
     {
-        self.products = [[NSArray alloc ]
-                 initWithObjects:@"iPad", @"iPod Touch",@"iPhone", nil];
-    }
-    else if ([self.title isEqualToString:@"Samsung Mobile Devices"])
-    {
-        self.products = [[NSArray alloc ]
-                 initWithObjects:@"Galaxy S4", @"Galaxy Note", @"Galaxy Tab", nil];
-    }
-    else if ([self.title isEqualToString:@"Microsoft Mobile Devices"])
-    {
-        self.products = [[NSArray alloc ]
-                         initWithObjects:@"Microsoft1", @"Microsoft2", @"Microsoft3", nil];
-    }
+        self.companyImageNames = @[@"apple-logo.jpeg", @"samsung-logo.png", @"Blackberry-logo.jpg", @"microsoft-logo.png", @"nokia-logo.jpg"];
+        
+        self.companyNames = @[@"Apple Mobile Devices",
+                              @"Samsung Mobile Devices",
+                              @"Blackberry Mobile Devices",
+                              @"Microsoft Mobile Devices",
+                              
+                              @"Nokia Mobile Devices"
+                              ];
 
-    else if ([self.title isEqualToString:@"Blackberry Mobile Devices"])
-    {
-        self.products = [[NSArray alloc ]
-                         initWithObjects:@"Blackberry1", @"Blackberry2", @"Blackberry3", nil];
+        self.productNames = @[@[@"iPad", @"iPod Touch", @"iPhone"],@[@"Galaxy S4", @"Galaxy Note", @"Galaxy Tab"],@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"],@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"],@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]];
+        
+        self.dict = [NSDictionary dictionaryWithObjects:self.productNames forKeys:self.companyNames];
+        
+        self.imageDict = [NSDictionary dictionaryWithObjects:self.companyImageNames forKeys:self.companyNames];
     }
-
-    else if ([self.title isEqualToString:@"Nokia Mobile Devices"])
-    {
-        self.products = [[NSArray alloc ]
-                         initWithObjects:@"Nokia1", @"Nokia2", @"Nokia3", nil];
-    }
-    else
-    {
-        self.products = @[@"", @"", @""];
-    }
-
     
+    NSLog(@"Dictionary is %@", self.dict);
     
+    self.products = [[NSMutableArray alloc ]init];
+    self.products = [self.dict objectForKey:self.title]; // self.title was pushed down from parent
+    
+    NSLog(@"Products are %@", self.products);
+
     
     [self.tableView reloadData];
 }
@@ -93,7 +84,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
         NSLog(@"\nChildViewController:(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView");
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }
@@ -101,7 +92,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
         NSLog(@"\nChildViewController:(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
     return [self.products count];
 }
@@ -111,7 +102,8 @@
             NSLog(@"\nChildViewController:(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
@@ -119,7 +111,9 @@
     
     cell.textLabel.text = [self.products objectAtIndex:
                            [indexPath row]];
+//    cell.imageView.image = [UIImage imageNamed:[self.companyImageNames objectAtIndex:[indexPath row] ]]; //this isn't quite right
     
+    cell.imageView.image = [UIImage imageNamed:[self.imageDict objectForKey:self.title]];
     return cell;
 }
 

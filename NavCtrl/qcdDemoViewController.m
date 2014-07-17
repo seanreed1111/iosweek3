@@ -41,6 +41,8 @@
     self.companyList = [[NSArray alloc]
                        initWithObjects:@"Apple Mobile Devices",
                        @"Samsung Mobile Devices", @"Blackberry Mobile Devices",@"Microsoft Mobile Devices",@"Nokia Mobile Devices",nil];
+    self.companyImageNames = @[@"apple-logo.jpeg", @"samsung-logo.png", @"Blackberry-logo.jpg", @"microsoft-logo.png", @"nokia-logo.jpg"];
+
     self.title = @"Mobile device makers";
     
     
@@ -86,7 +88,27 @@
     cell.textLabel.text = [self.companyList objectAtIndex:
      [indexPath row]];
     
+    cell.imageView.image = [UIImage imageNamed:[self.companyImageNames objectAtIndex:[indexPath row] ]];
+    
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Selected ChildView - now push the proper view to application - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
+    
+    
+    self.childVC.title = self.companyList[indexPath.row];
+    
+    [self.navigationController
+     pushViewController:self.childVC
+     animated:YES];
+    
+    
 }
 
 /*
@@ -129,24 +151,7 @@
 */
 
 
-#pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-            NSLog(@"Selected ChildView - now push the proper view to application - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
-
-    
-    self.childVC.title = self.companyList[indexPath.row];
-    
-    [self.navigationController
-     pushViewController:self.childVC
-     animated:YES];
-    
-
-}
- 
 
 
 @end

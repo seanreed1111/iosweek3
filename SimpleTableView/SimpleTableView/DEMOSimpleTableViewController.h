@@ -11,6 +11,7 @@
 @interface DEMOSimpleTableViewController : UITableViewController
 {
     NSMutableArray *items;
+    NSMutableArray *images;
 }
 
 

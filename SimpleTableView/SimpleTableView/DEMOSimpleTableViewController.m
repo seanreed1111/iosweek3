@@ -16,11 +16,11 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     items = [[NSMutableArray alloc] init];
-    for(int i=0;i< 10; i++){
+    for(int i=0;i< 10; i++)
+    {
         NSString *data = [[NSString alloc] initWithFormat:@"This is row: %d",i+1];
         [items addObject:data];
     }
-    
     return self;
 }
 

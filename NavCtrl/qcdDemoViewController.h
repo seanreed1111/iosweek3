@@ -12,7 +12,8 @@
 
 @interface qcdDemoViewController : UITableViewController
 
-@property (nonatomic, retain) NSArray *companyList;
+@property (nonatomic, copy) NSArray *companyList;
+@property (nonatomic, copy) NSArray *companyImageNames;
 
 @property (nonatomic, retain) IBOutlet  ChildViewController * childVC;
 
