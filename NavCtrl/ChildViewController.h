@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) IBOutlet detailViewController * detailVC;
 
-@property (nonatomic, copy) NSMutableArray *products; // from original version of file
+@property (nonatomic, strong) NSMutableArray *products;
 
 @property (nonatomic, copy) NSArray *companyNames;
 @property (nonatomic, copy) NSArray *productNames;
@@ -24,5 +24,5 @@
 
 @property (nonatomic, copy) NSDictionary *imageDict;
 @property (nonatomic, copy) NSDictionary *urlDict;
-@property (nonatomic, copy) NSDictionary *dict;
+@property (nonatomic, copy) NSMutableDictionary *dict;
 @end

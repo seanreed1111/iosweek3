@@ -33,18 +33,6 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-        NSLog(@"\nChildViewController: viewWillAppear: animated:");
-    
-    [super viewWillAppear:animated];
     if (!self.dict)
     {
         self.companyImageNames = @[@"apple-logo.jpeg", @"samsung-logo.png", @"Blackberry-logo.jpg", @"microsoft-logo.png", @"nokia-logo.jpg"];
@@ -59,19 +47,38 @@
                               
                               @"Nokia Mobile Devices"
                               ];
-
+        
         self.productNames = @[@[@"iPad", @"iPod Touch", @"iPhone"],@[@"Galaxy S4", @"Galaxy Note", @"Galaxy Tab"],@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"],@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"],@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]];
         
-        self.dict = [NSDictionary dictionaryWithObjects:self.productNames forKeys:self.companyNames];
+        self.dict = [NSMutableDictionary dictionaryWithObjects:self.productNames forKeys:self.companyNames];
         
         self.imageDict = [NSDictionary dictionaryWithObjects:self.companyImageNames forKeys:self.companyNames];
         
         self.urlDict = [NSDictionary dictionaryWithObjects:self.companyURLs forKeys:self.companyNames];
     }
+
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+        NSLog(@"\nChildViewController: viewWillAppear: animated:");
+    
+    [super viewWillAppear:animated];
     
     self.products = [[NSMutableArray alloc ]init];
-    self.products = [self.dict objectForKey:self.title]; // self.title was pushed down from parent
     
+    //this line is the problem
+    //it must be giving me an nsarray!
+    
+    [self.products addObjectsFromArray:[self.dict objectForKey:self.title]];
+    
+    NSLog(@"\nThere are %d products loaded", [self.products count]);
     [self.tableView reloadData];
 }
 
@@ -92,7 +99,8 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
         NSLog(@"\nChildViewController:(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
 
@@ -100,7 +108,8 @@
     return [self.products count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
             NSLog(@"\nChildViewController:(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
     static NSString *CellIdentifier = @"Cell";
@@ -121,7 +130,8 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
                 NSLog(@"\nChildViewController:(UITableView *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
     
@@ -142,7 +152,8 @@
 }
 
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"\nChildViewController:tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath");
     // Return NO if you do not want the specified item to be editable.
@@ -151,18 +162,48 @@
     return YES;
 }
 
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView
+canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"\nChildViewController:tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath");
+    return YES;
+}
 
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+
+// Support editing/deleting the table view.
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"\nChildViewController:tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath");
+    
+    NSLog(@"\nIndexPath is %@", indexPath);
+    
+    NSLog(@"\n[IndexPath length] is %d", [indexPath length]);
+        NSLog(@"\n[IndexPath row] is %d", [indexPath row]);
+    NSLog(@"\n self.products is %@", self.products);
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        
+        if(self.products)
+        {
+            [self.products removeObjectAtIndex:indexPath.row];
+            
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
+}
+
+- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths
+              withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSLog(@"\n indexPaths is %@",[indexPaths description]);
+    NSLog(@"\n UITableViewRowAnimation variable enum default is %d", animation);
 }
 
 
@@ -173,11 +214,5 @@
 }
 
 
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-        NSLog(@"\nChildViewController:tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath");
-    return YES;
-}
 
 @end
