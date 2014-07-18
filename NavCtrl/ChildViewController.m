@@ -30,7 +30,9 @@
 {
         NSLog(@"\nChildViewController: viewDidLoad");
     [super viewDidLoad];
-
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -67,13 +69,8 @@
         self.urlDict = [NSDictionary dictionaryWithObjects:self.companyURLs forKeys:self.companyNames];
     }
     
-    NSLog(@"Dictionary is %@", self.dict);
-    
     self.products = [[NSMutableArray alloc ]init];
     self.products = [self.dict objectForKey:self.title]; // self.title was pushed down from parent
-    
-    NSLog(@"Products are %@", self.products);
-
     
     [self.tableView reloadData];
 }
@@ -126,7 +123,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
                 NSLog(@"\nChildViewController:(UITableView *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
     
     if(!self.detailVC)
@@ -141,24 +137,25 @@
     // Pass the selected object to the new view controller.
     
     [self.navigationController pushViewController:self.detailVC animated:YES];
-    
-    NSLog(@"\nself.navigationcontroller is %@", self.navigationController);
+
 
 }
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"\nChildViewController:tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath");
     // Return NO if you do not want the specified item to be editable.
+    
+    
     return YES;
 }
-
 
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"\nChildViewController:tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath");
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -169,18 +166,17 @@
 }
 
 
-
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+        NSLog(@"\nChildViewController:tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath");
 }
-
 
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+        NSLog(@"\nChildViewController:tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath");
     return YES;
 }
 
