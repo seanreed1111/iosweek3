@@ -15,11 +15,11 @@
 @property (strong, nonatomic) NSMutableArray *allCompanies;
 
 - (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary;
-- (void)addProduct:(OONCProduct *) product toCompany:(OONCCompany *) company;
+- (void)addProduct:(OONCProduct *)product toCompany:(OONCCompany *)company;
 - (void)deleteProduct:(OONCProduct *)product fromCompany:(OONCCompany *)company;
 
 
 - (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
-- (void)addCompany;
+- (void)addCompany:(OONCCompany *)company;
 - (void)deleteCompany:(OONCCompany *)company;
 @end
