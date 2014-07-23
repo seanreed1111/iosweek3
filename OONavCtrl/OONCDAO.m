@@ -35,14 +35,28 @@
     return [OONCProduct createProductWithDictionary:productDictionary];
 }
 
-- (void)addProduct:(OONCProduct *) product toCompany:(OONCCompany *) company
+- (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name
 {
+    for(OONCCompany *company in self.allCompanies)
+    {
+        if ([name isEqualToString:company.companyname])
+        {
+            [company.products addObject:product];
+        }
+    }
 
 }
 
-- (void)deleteProduct:(OONCProduct *)product fromCompany:(OONCCompany *)company
+- (void)deleteProduct:(OONCProduct *)product fromCompanyName:(NSString *)name
 {
-    
+    for(OONCCompany *company in self.allCompanies)
+    {
+        if ([name isEqualToString:company.companyname])
+        {
+            [company.products removeObject:product];
+        }
+    }
+
 }
 
 

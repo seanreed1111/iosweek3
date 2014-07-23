@@ -12,11 +12,11 @@
 
 @interface OONCDAO : NSObject
 
-@property (strong, nonatomic) NSMutableArray *allCompanies;
+@property (strong, nonatomic) NSMutableArray *allCompanies; //of OONCCompany objects
 
 - (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary;
-- (void)addProduct:(OONCProduct *)product toCompany:(OONCCompany *)company;
-- (void)deleteProduct:(OONCProduct *)product fromCompany:(OONCCompany *)company;
+- (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name;
+- (void)deleteProduct:(OONCProduct *)product fromCompanyName:(NSString *)name;
 
 
 - (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
