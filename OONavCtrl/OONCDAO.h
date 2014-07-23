@@ -11,6 +11,15 @@
 #import "OONCCompany.h"
 
 @interface OONCDAO : NSObject
-@property (strong, nonatomic) NSMutableDictionary *products;
-@property (strong, nonatomic) NSMutableDictionary *companies;
+
+@property (strong, nonatomic) NSMutableArray *allCompanies;
+
+- (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary;
+- (void)addProduct:(OONCProduct *) product toCompany:(OONCCompany *) company;
+- (void)deleteProduct:(OONCProduct *)product fromCompany:(OONCCompany *)company;
+
+
+- (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
+- (void)addCompany;
+- (void)deleteCompany:(OONCCompany *)company;
 @end

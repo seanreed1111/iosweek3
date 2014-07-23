@@ -10,25 +10,42 @@
 
 @implementation OONCDAO
 
-- (OONCProduct *)createProductObject:(NSMutableDictionary *)productDict
+//product related methods of DAO
+// add a newly created product to the allProducts array
+
+- (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary
 {
-    NSArray *keys = [[NSArray alloc]initWithArray:[productDict allKeys] copyItems:YES];
+    return [OONCProduct createProductWithDictionary:productDictionary];
+}
+
+- (void)addProduct:(OONCProduct *) product toCompany:(OONCCompany *) company
+{
+
+}
+
+- (void)deleteProduct:(OONCProduct *)product fromCompany:(OONCCompany *)company
+{
     
-    return [OONCProduct initWithArray:keys];
-//  should also implement  return [OONCProduct initWithDictionary:keys];
 }
 
-- (NSMutableDictionary *)getProductObjects
+
+//company-related methods of DAO
+
+// add a newly created company to the allCompanies array
+
+- (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary
 {
-    return self.products;
+    return [OONCCompany createCompanyWithDictionary:companyDictionary];
 }
 
-
-- (void)deleteProduct:(OONCProduct *)product
+- (void)addCompany
 {
     
 }
 
-
+- (void)deleteCompany:(OONCCompany *)company
+{
+    
+}
 
 @end
