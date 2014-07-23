@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface OONCProduct : NSObject
-@property(nonatomic, copy) NSMutableString *name;
+@property(nonatomic, strong) NSString *name;
 @property(nonatomic, strong) NSURL *url;
 
-
+- (OONCProduct *)initWithDictionary:(NSDictionary*)productDictionary;
++ (OONCProduct *)createWithDictionary:(NSDictionary*)productDictionary;
 @end

@@ -10,26 +10,35 @@
 
 @implementation OONCProduct
 
-
-- (OONCProduct *)initWithArray:(NSArray*)array
+//designated initializer
+- (OONCProduct *)initWithDictionary:(NSDictionary*)productDictionary
 {
     self = [super init];
-
-    
+    if (self)
+    {
+        NSArray *keys = [productDictionary allKeys];
+        
+        //copy objects passed from dictionary into named properties of current object
+        for (NSString *property in keys)
+        {
+            SEL setProperty = NSSelectorFromString([NSString stringWithFormat:@"set%@:",[property capitalizedString]]);
+            //if property names already have a capital letter in them, this won't work.
+            //Would need a 'capitalize first word only' method.
+            
+            if([self respondsToSelector:setProperty])
+            {
+                [self performSelector:setProperty
+                           withObject:[productDictionary objectForKey:property]];
+            }
+        }
+        
+    }
     return self;
 }
 
-+ (OONCProduct *)initWithArray:(NSArray*)array
++ (OONCProduct *)createWithDictionary:(NSDictionary*)productDictionary
 {
-    OONCProduct *newProduct = [[OONCProduct alloc]init];
-    
-    return newProduct;
-}
-
-+ (OONCProduct *)initWithDictionary:(NSDictionary*)array
-{
-    OONCProduct *newProduct = [[OONCProduct alloc]init];
-    
-    return newProduct;
+    OONCProduct *newObj = [[OONCProduct alloc]initWithDictionary:productDictionary];
+    return newObj;
 }
 @end
