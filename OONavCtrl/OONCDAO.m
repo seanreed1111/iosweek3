@@ -13,7 +13,9 @@
 
 - (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary
 {
-    return [OONCCompany createCompanyWithDictionary:companyDictionary];
+    OONCCompany *newCompany= [OONCCompany createCompanyWithDictionary:companyDictionary];
+    [self addCompany:newCompany];
+    return newCompany;
 }
 
 - (void)addCompany:(OONCCompany *)company
