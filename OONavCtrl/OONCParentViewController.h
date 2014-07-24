@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OONCDAO.h"
 
 @interface OONCParentViewController : UITableViewController
+@property(strong, nonatomic)OONCDAO *dao;
 
 @end

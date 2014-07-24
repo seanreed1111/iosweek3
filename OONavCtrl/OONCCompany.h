@@ -18,6 +18,7 @@
 @property(strong, nonatomic) NSMutableArray *products; //of OONCProduct objects
 
 + (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
++ (OONCCompany *)createCompanyWithCompany:(OONCCompany *)company;
 
 - (OONCCompany *)initCompanyWithDictionary:(NSDictionary*)companyDictionary;
 

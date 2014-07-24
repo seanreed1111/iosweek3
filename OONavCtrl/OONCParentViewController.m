@@ -7,7 +7,7 @@
 //
 
 #import "OONCParentViewController.h"
-#import "OONCDAO.h"
+
 
 @implementation OONCParentViewController
 
@@ -30,20 +30,20 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
-    OONCDAO *dao = [[OONCDAO alloc]init];
+    self.dao = [[OONCDAO alloc]init];
     
     NSDictionary *microsoftDictionary = @{@"companyname":@"Microsoft",@"companyurl":@"http://microsoft.com", @"companyimagename":@"microsoft-logo.png", @"products":@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"]};
     NSDictionary *appleDictionary = @{@"companyname":@"Apple",@"companyurl":@"http://apple.com", @"companyimagename":@"apple-logo.jpeg",@"products":@[@"iPad", @"iPod Touch", @"iPhone"]};
     NSDictionary *nokiaDictionary = @{@"companyname":@"Nokia",@"companyurl":@"http://nokia.com/us-en/phones/", @"companyimagename":@"nokia-logo.jpg", @"products":@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]};
     NSDictionary *samsungDictionary = @{@"companyname":@"Samsung",@"companyurl":@"http://samsung.com/us", @"companyimagename":@"samsung-logo.png",@"products":@[@"Samsung Product #1", @"Samsung Product #2", @"Samsung Product #3"]};
-    NSDictionary *blackberryDictionary = @{@"companyname":@"Blackberry",@"companyurl":@"http://microsoft.com", @"companyimagename":@"blackberry-logo.png",@"products":@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"]};
+    NSDictionary *blackberryDictionary = @{@"companyname":@"Blackberry",@"companyurl":@"http://microsoft.com", @"companyimagename":@"Blackberry-logo.jpg",@"products":@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"]};
     
     
-    [dao createCompanyWithDictionary:microsoftDictionary];
-    [dao createCompanyWithDictionary:appleDictionary];
-    [dao createCompanyWithDictionary:nokiaDictionary];
-    [dao createCompanyWithDictionary:samsungDictionary];
-    [dao createCompanyWithDictionary:blackberryDictionary];
+    [self.dao createCompanyWithDictionary:microsoftDictionary];
+    [self.dao createCompanyWithDictionary:appleDictionary];
+    [self.dao createCompanyWithDictionary:nokiaDictionary];
+    [self.dao createCompanyWithDictionary:samsungDictionary];
+    [self.dao createCompanyWithDictionary:blackberryDictionary];
     
     
 }
@@ -58,28 +58,39 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+    NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
     // Return the number of rows in the section.
-    return 0;
+    NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
+    return [self.dao.allCompanies count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NSLog(@"tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
     
-    // Configure the cell...
-    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(!cell)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
+    //configure the cell
+    OONCCompany *company = [[OONCCompany alloc]init]; //make companyWithCompany class method
+    company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
+    cell.textLabel.text = company.companyname;
+    cell.imageView.image = [UIImage imageNamed:company.companyimagename];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

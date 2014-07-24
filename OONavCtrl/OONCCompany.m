@@ -16,6 +16,11 @@
     return [[OONCCompany alloc]initCompanyWithDictionary:companyDictionary];
 }
 
++ (OONCCompany *)createCompanyWithCompany:(OONCCompany *)company
+{
+    return [company copy];
+}
+
 // instance methods
 - (OONCCompany *)initCompanyWithDictionary:(NSDictionary *)companyDictionary
 {
