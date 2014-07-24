@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1499496619815FB600D01B34 /* microsoft-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1499496519815FB600D01B34 /* microsoft-logo.png */; };
 		14A566AD19805586007D8D2F /* OONCParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A566AC19805586007D8D2F /* OONCParentViewController.m */; };
 		14A566B0198056A4007D8D2F /* OONChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A566AF198056A4007D8D2F /* OONChildViewController.m */; };
 		14A566B419806155007D8D2F /* apple-logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 14A566B119806155007D8D2F /* apple-logo.jpeg */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1499496519815FB600D01B34 /* microsoft-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "microsoft-logo.png"; path = "../microsoft-logo.png"; sourceTree = "<group>"; };
 		14A566AB19805586007D8D2F /* OONCParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OONCParentViewController.h; sourceTree = "<group>"; };
 		14A566AC19805586007D8D2F /* OONCParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OONCParentViewController.m; sourceTree = "<group>"; };
 		14A566AE198056A4007D8D2F /* OONChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OONChildViewController.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		14AEA026197D5DA30011CF4D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1499496519815FB600D01B34 /* microsoft-logo.png */,
 				14A566B919806171007D8D2F /* samsung-logo.png */,
 				14A566B719806163007D8D2F /* nokia-logo.jpg */,
 				14A566B119806155007D8D2F /* apple-logo.jpeg */,
@@ -275,6 +278,7 @@
 				14AEA033197D5DA30011CF4D /* Main.storyboard in Resources */,
 				14A566B419806155007D8D2F /* apple-logo.jpeg in Resources */,
 				14A566B519806155007D8D2F /* Blackberry-logo.jpg in Resources */,
+				1499496619815FB600D01B34 /* microsoft-logo.png in Resources */,
 				14A566B619806155007D8D2F /* blackberry-logo.png in Resources */,
 				14A566BA19806171007D8D2F /* samsung-logo.png in Resources */,
 			);

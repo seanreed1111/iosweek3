@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -30,6 +31,19 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
     OONCDAO *dao = [[OONCDAO alloc]init];
+    
+    NSDictionary *microsoftDictionary = @{@"companyname":@"Microsoft",@"companyurl":@"http://microsoft.com", @"companyimagename":@"microsoft-logo.png", @"products":@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"]};
+    NSDictionary *appleDictionary = @{@"companyname":@"Apple",@"companyurl":@"http://apple.com", @"companyimagename":@"apple-logo.jpeg",@"products":@[@"iPad", @"iPod Touch", @"iPhone"]};
+    NSDictionary *nokiaDictionary = @{@"companyname":@"Nokia",@"companyurl":@"http://nokia.com/us-en/phones/", @"companyimagename":@"nokia-logo.jpg", @"products":@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]};
+    NSDictionary *samsungDictionary = @{@"companyname":@"Samsung",@"companyurl":@"http://samsung.com/us", @"companyimagename":@"samsung-logo.png",@"products":@[@"Samsung Product #1", @"Samsung Product #2", @"Samsung Product #3"]};
+    NSDictionary *blackberryDictionary = @{@"companyname":@"Blackberry",@"companyurl":@"http://microsoft.com", @"companyimagename":@"blackberry-logo.png",@"products":@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"]};
+    
+    
+    [dao createCompanyWithDictionary:microsoftDictionary];
+    [dao createCompanyWithDictionary:appleDictionary];
+    [dao createCompanyWithDictionary:nokiaDictionary];
+    [dao createCompanyWithDictionary:samsungDictionary];
+    [dao createCompanyWithDictionary:blackberryDictionary];
     
     
 }

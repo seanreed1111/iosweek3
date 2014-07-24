@@ -20,6 +20,10 @@
 
 - (void)addCompany:(OONCCompany *)company
 {
+    if(!self.allCompanies)
+    {
+        self.allCompanies = [[NSMutableArray alloc]initWithCapacity:5];
+    }
     [self.allCompanies addObject:company];
 }
 
@@ -39,10 +43,15 @@
 
 - (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name
 {
+
     for(OONCCompany *company in self.allCompanies)
     {
         if ([name isEqualToString:company.companyname])
         {
+            if(!company.products)
+            {
+                company.products = [[NSMutableArray alloc]initWithCapacity:5];
+            }
             [company.products addObject:product];
         }
     }

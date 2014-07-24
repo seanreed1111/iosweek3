@@ -20,7 +20,7 @@
 
 - (void)addCompany:(OONCCompany *)company;
 - (void)deleteCompany:(OONCCompany *)company;
-- (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name;
+- (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name; //also make addProduct:(OONCProduct *) toCompany:(OONCCompany*)
 - (void)deleteProduct:(OONCProduct *)product fromCompanyName:(NSString *)name;
 
 
