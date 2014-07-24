@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "OONCDAO.h"
+#import "OONChildViewController.h"
 
 @interface OONCParentViewController : UITableViewController
 @property(strong, nonatomic)OONCDAO *dao;
+@property(strong, nonatomic)OONChildViewController *childVC;
 
 @end

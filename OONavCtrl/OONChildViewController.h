@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OONCCompany.h"
 
 @interface OONChildViewController : UITableViewController
+@property(strong, nonatomic) OONCCompany *company;
 
 @end
