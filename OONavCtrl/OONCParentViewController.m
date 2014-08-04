@@ -13,6 +13,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    NSLog(@" (id)initWithStyle:(UITableViewStyle)style");
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"viewDidLoad");
+    NSLog(@"\nParentVC viewDidLoad");
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -32,6 +33,7 @@
     self.title = @"Mobile Device Makers";
     self.dao = [[OONCDAO alloc]init];
     
+
     NSDictionary *microsoftDictionary = @{@"companyname":@"Microsoft",@"companyurl":@"http://microsoft.com", @"companyimagename":@"microsoft-logo.png", @"products":@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"]};
     NSDictionary *appleDictionary = @{@"companyname":@"Apple",@"companyurl":@"http://apple.com", @"companyimagename":@"apple-logo.jpeg",@"products":@[@"iPad", @"iPod Touch", @"iPhone"]};
     NSDictionary *nokiaDictionary = @{@"companyname":@"Nokia",@"companyurl":@"http://nokia.com/us-en/phones/", @"companyimagename":@"nokia-logo.jpg", @"products":@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]};
@@ -44,12 +46,12 @@
     [self.dao createCompanyWithDictionary:nokiaDictionary];
     [self.dao createCompanyWithDictionary:samsungDictionary];
     [self.dao createCompanyWithDictionary:blackberryDictionary];
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"\nparentVC:didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -67,7 +69,7 @@
 {
     NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
     // Return the number of rows in the section.
-    NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
+
     return [self.dao.allCompanies count];
 }
 
@@ -84,7 +86,7 @@
     }
 
     //configure the cell
-    OONCCompany *company = [[OONCCompany alloc]init]; //make companyWithCompany class method
+    OONCCompany *company = [[OONCCompany alloc]init];
     company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
     cell.textLabel.text = company.companyname;
     cell.imageView.image = [UIImage imageNamed:company.companyimagename];
@@ -98,11 +100,12 @@
     {
         self.childVC = [[OONChildViewController alloc]init];
     }
+    
     OONCCompany *company = [[OONCCompany alloc]init];
     company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
-    self.childVC.company = company;
+    self.childVC.company= company;
+    
     self.childVC.title  = [company companyname];
-
     
     [self.navigationController pushViewController:self.childVC animated:YES];
 }

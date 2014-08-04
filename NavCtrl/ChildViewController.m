@@ -133,7 +133,7 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-                NSLog(@"\nChildViewController:(UITableView *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
+    NSLog(@"\nChildViewController:(UITableView *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
     
     if(!self.detailVC)
     {

@@ -15,12 +15,14 @@
 @property(copy, nonatomic) NSString *companyimagename;
 @property(copy, nonatomic) NSString *companyimagepath;
 
-@property(strong, nonatomic) NSMutableArray *products; //of OONCProduct objects
+@property(strong, nonatomic) NSMutableArray *products; //of NSString* objects
+
 
 + (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
 + (OONCCompany *)createCompanyWithCompany:(OONCCompany *)company;
 
 - (OONCCompany *)initCompanyWithDictionary:(NSDictionary*)companyDictionary;
+
 
 @end
 

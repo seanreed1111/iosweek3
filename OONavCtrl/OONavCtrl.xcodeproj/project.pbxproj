@@ -15,6 +15,7 @@
 		14A566B619806155007D8D2F /* blackberry-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 14A566B319806155007D8D2F /* blackberry-logo.png */; };
 		14A566B819806163007D8D2F /* nokia-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14A566B719806163007D8D2F /* nokia-logo.jpg */; };
 		14A566BA19806171007D8D2F /* samsung-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 14A566B919806171007D8D2F /* samsung-logo.png */; };
+		14AACF04198FCE27003D81E6 /* OONCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AACF03198FCE27003D81E6 /* OONCWebViewController.m */; };
 		14AEA020197D5DA30011CF4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AEA01F197D5DA30011CF4D /* Foundation.framework */; };
 		14AEA022197D5DA30011CF4D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AEA021197D5DA30011CF4D /* CoreGraphics.framework */; };
 		14AEA024197D5DA30011CF4D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AEA023197D5DA30011CF4D /* UIKit.framework */; };
@@ -55,6 +56,8 @@
 		14A566B319806155007D8D2F /* blackberry-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackberry-logo.png"; sourceTree = "<group>"; };
 		14A566B719806163007D8D2F /* nokia-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nokia-logo.jpg"; sourceTree = "<group>"; };
 		14A566B919806171007D8D2F /* samsung-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "samsung-logo.png"; sourceTree = "<group>"; };
+		14AACF02198FCE27003D81E6 /* OONCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OONCWebViewController.h; sourceTree = "<group>"; };
+		14AACF03198FCE27003D81E6 /* OONCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OONCWebViewController.m; sourceTree = "<group>"; };
 		14AEA01C197D5DA30011CF4D /* OONavCtrl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OONavCtrl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AEA01F197D5DA30011CF4D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		14AEA021197D5DA30011CF4D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +112,8 @@
 		14AEA013197D5DA30011CF4D = {
 			isa = PBXGroup;
 			children = (
+				14AACF02198FCE27003D81E6 /* OONCWebViewController.h */,
+				14AACF03198FCE27003D81E6 /* OONCWebViewController.m */,
 				14A566AE198056A4007D8D2F /* OONChildViewController.h */,
 				14A566AF198056A4007D8D2F /* OONChildViewController.m */,
 				14A566AB19805586007D8D2F /* OONCParentViewController.h */,
@@ -300,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14AEA02C197D5DA30011CF4D /* main.m in Sources */,
+				14AACF04198FCE27003D81E6 /* OONCWebViewController.m in Sources */,
 				14A566AD19805586007D8D2F /* OONCParentViewController.m in Sources */,
 				14A566B0198056A4007D8D2F /* OONChildViewController.m in Sources */,
 				14AEA036197D5DA30011CF4D /* OONCViewController.m in Sources */,

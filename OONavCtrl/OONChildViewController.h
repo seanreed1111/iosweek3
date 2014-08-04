@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "OONCCompany.h"
+#import "OONCWebViewController.h"
 
 @interface OONChildViewController : UITableViewController
 @property(strong, nonatomic) OONCCompany *company;
-
+@property(strong, nonatomic)OONCWebViewController *webVC;
 @end
