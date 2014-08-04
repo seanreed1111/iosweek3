@@ -95,11 +95,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // if selected, move to childviewcontroller
-    if(!self.childVC)
-    {
-        self.childVC = [[OONChildViewController alloc]init];
-    }
+
+    self.childVC = [[OONChildViewController alloc]init];
+
     
     OONCCompany *company = [[OONCCompany alloc]init];
     company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
