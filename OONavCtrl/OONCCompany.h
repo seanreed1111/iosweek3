@@ -14,6 +14,7 @@
 @property(copy, nonatomic) NSString *companyurl;
 @property(copy, nonatomic) NSString *companyimagename;
 @property(copy, nonatomic) NSString *companyimagepath;
+@property(copy, nonatomic) NSString *ticker;
 
 @property(strong, nonatomic) NSMutableArray *products; //of NSString* objects
 

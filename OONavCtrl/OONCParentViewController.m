@@ -34,11 +34,11 @@
     self.dao = [[OONCDAO alloc]init];
     
 
-    NSDictionary *microsoftDictionary = @{@"companyname":@"Microsoft",@"companyurl":@"http://microsoft.com", @"companyimagename":@"microsoft-logo.png", @"products":@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"]};
-    NSDictionary *appleDictionary = @{@"companyname":@"Apple",@"companyurl":@"http://apple.com", @"companyimagename":@"apple-logo.jpeg",@"products":@[@"iPad", @"iPod Touch", @"iPhone"]};
-    NSDictionary *nokiaDictionary = @{@"companyname":@"Nokia",@"companyurl":@"http://nokia.com/us-en/phones/", @"companyimagename":@"nokia-logo.jpg", @"products":@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]};
-    NSDictionary *samsungDictionary = @{@"companyname":@"Samsung",@"companyurl":@"http://samsung.com/us", @"companyimagename":@"samsung-logo.png",@"products":@[@"Samsung Product #1", @"Samsung Product #2", @"Samsung Product #3"]};
-    NSDictionary *blackberryDictionary = @{@"companyname":@"Blackberry",@"companyurl":@"http://microsoft.com", @"companyimagename":@"Blackberry-logo.jpg",@"products":@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"]};
+    NSDictionary *microsoftDictionary = @{@"companyname":@"Microsoft",@"companyurl":@"http://microsoft.com", @"companyimagename":@"microsoft-logo.png",@"ticker":@"MSFT",@"products":@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"]};
+    NSDictionary *appleDictionary = @{@"companyname":@"Apple",@"companyurl":@"http://apple.com", @"companyimagename":@"apple-logo.jpeg",@"ticker":@"AAPL",@"products":@[@"iPad", @"iPod Touch", @"iPhone"]};
+    NSDictionary *nokiaDictionary = @{@"companyname":@"Nokia",@"companyurl":@"http://nokia.com/us-en/phones/", @"companyimagename":@"nokia-logo.jpg", @"ticker":@"NOK",@"products":@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]};
+    NSDictionary *samsungDictionary = @{@"companyname":@"Samsung",@"companyurl":@"http://samsung.com/us", @"companyimagename":@"samsung-logo.png",@"ticker":@"005930.KS",@"products":@[@"Samsung Product #1", @"Samsung Product #2", @"Samsung Product #3"]};
+    NSDictionary *blackberryDictionary = @{@"companyname":@"Blackberry",@"companyurl":@"http://microsoft.com", @"companyimagename":@"Blackberry-logo.jpg",@"ticker":@"BBRY",@"products":@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"]};
     
     
     [self.dao createCompanyWithDictionary:microsoftDictionary];
@@ -84,10 +84,13 @@
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+ 
 
     //configure the cell
     OONCCompany *company = [[OONCCompany alloc]init];
     company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
+    
+    [self asynchGetPriceFromStockTicker:company.ticker];
     cell.textLabel.text = company.companyname;
     cell.imageView.image = [UIImage imageNamed:company.companyimagename];
     return cell;
@@ -130,6 +133,14 @@
     }   
 }
 
+- (void)asynchGetPriceFromStockTicker:(NSString *)ticker
+{
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://download.finance.yahoo.com/d/quotes.csv?s=%@&f=l1",ticker]];
+    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
+    
+    NSLog(@"asynchGetPriceFromStockSymbol:(NSString*)ticker:%@",ticker);
+}
 
 /*
 // Override to support rearranging the table view.
@@ -159,5 +170,40 @@
     // Pass the selected object to the new view controller.
 }
 
+#pragma mark - NSURLConnectionDelegate methods
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"\nconnection: %@ didReceiveResponse",connection);
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    if (!self.receivedData)
+    {
+        self.receivedData = [[NSMutableData alloc]init];
+    }
+    [self.receivedData appendData:data];
+}
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+    NSLog(@"\nconnection: %@ didFailWithError: %@ %@",connection,[error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    connection = nil;
+    self.receivedData = nil;
+    
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"\nconnection %@DidFinishLoading ",connection);
+//    NSLog(@"Final data is %d bytes: %@",[self.receivedData length],self.receivedData);
+    NSString *string = [[NSString alloc]initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+    NSLog(@"\nFinal Data from connection %@ converted to string is %@", connection, string);
+    connection = nil;
+    self.receivedData = nil;
+}
 @end

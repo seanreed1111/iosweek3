@@ -14,6 +14,7 @@
 @property(nonatomic, copy) NSString * productimagename;
 @property(nonatomic, copy) NSString * productimagepath;
 
+
 + (OONCProduct *)createProductWithDictionary:(NSDictionary*)productDictionary;
 
 - (OONCProduct *)initProductWithDictionary:(NSDictionary*)productDictionary;

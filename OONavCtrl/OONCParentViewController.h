@@ -10,8 +10,10 @@
 #import "OONCDAO.h"
 #import "OONChildViewController.h"
 
-@interface OONCParentViewController : UITableViewController
+@interface OONCParentViewController : UITableViewController <NSURLConnectionDelegate , NSURLConnectionDataDelegate>
 @property(strong, nonatomic)OONCDAO *dao;
 @property(strong, nonatomic)OONChildViewController *childVC;
+@property(strong, nonatomic)NSMutableData *receivedData;
+-(void)asynchGetPriceFromStockTicker:(NSString*)ticker;
 
 @end
