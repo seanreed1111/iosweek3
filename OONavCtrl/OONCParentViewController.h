@@ -14,6 +14,7 @@
 @property(strong, nonatomic)OONCDAO *dao;
 @property(strong, nonatomic)OONChildViewController *childVC;
 @property(strong, nonatomic)NSMutableData *receivedData;
--(void)asynchGetPriceFromStockTicker:(NSString*)ticker;
-
+@property(strong, nonatomic)NSMutableDictionary *stockPrices;
+-(void)asynchGetPriceFromStockTicker:(NSString *)ticker;
+-(void)asynchGetPricesFromCompanies:(NSArray *)companies;// of OONCCompany objects
 @end

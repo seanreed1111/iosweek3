@@ -49,6 +49,20 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self asynchGetPricesFromCompanies:[self.dao allCompanies]];
+    
+    NSLog(@"\nParentController - viewWillAppear:(BOOL)animated");
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    NSLog(@"\nParentController - viewDidAppear:(BOOL)animated");
+}
+
 - (void)didReceiveMemoryWarning
 {
     NSLog(@"\nparentVC:didReceiveMemoryWarning");
@@ -90,7 +104,7 @@
     OONCCompany *company = [[OONCCompany alloc]init];
     company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
     
-    [self asynchGetPriceFromStockTicker:company.ticker];
+//    [self asynchGetPriceFromStockTicker:company.ticker];
     cell.textLabel.text = company.companyname;
     cell.imageView.image = [UIImage imageNamed:company.companyimagename];
     return cell;
@@ -139,7 +153,33 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://download.finance.yahoo.com/d/quotes.csv?s=%@&f=l1",ticker]];
     NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
     
-    NSLog(@"asynchGetPriceFromStockSymbol:(NSString*)ticker:%@",ticker);
+    NSLog(@"asynchGetPriceFromTickers:(NSString*)ticker:%@",ticker);
+}
+
+-(void)asynchGetPricesFromCompanies:(NSArray *)companies
+{
+    NSMutableArray *tickers = [[NSMutableArray alloc]init];
+    for(OONCCompany *company in companies)
+    {
+        [tickers addObject:company.ticker];
+    }
+    
+    NSMutableString *tickersString = [[NSMutableString alloc]initWithCapacity:[tickers count]];
+    for(int i=0;i < [tickers count];i++)
+    {
+        if(i < [tickers count]-1)
+        {
+            [tickersString appendFormat:@"%@,",tickers[i]];
+        }
+        else
+        {
+            [tickersString appendString:tickers[i]];
+        }
+    }
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://download.finance.yahoo.com/d/quotes.csv?s=%@&f=l1",tickersString]];
+    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
+    
+    NSLog(@"asynchGetPricesFromCompanies:(NSString*)tickers:%@",tickersString);
 }
 
 /*
@@ -202,7 +242,9 @@
     NSLog(@"\nconnection %@DidFinishLoading ",connection);
 //    NSLog(@"Final data is %d bytes: %@",[self.receivedData length],self.receivedData);
     NSString *string = [[NSString alloc]initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"\nFinal Data from connection %@ converted to string is %@", connection, string);
+    NSLog(@"\nFinal Data from connection %@ converted to string is \n%@", connection, string);
+    
+    
     connection = nil;
     self.receivedData = nil;
 }
