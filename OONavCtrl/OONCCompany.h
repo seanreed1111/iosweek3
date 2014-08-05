@@ -15,7 +15,7 @@
 @property(copy, nonatomic) NSString *companyimagename;
 @property(copy, nonatomic) NSString *companyimagepath;
 @property(copy, nonatomic) NSString *ticker;
-@property(copy, nonatomic) NSString *price;
+@property(strong, nonatomic) NSMutableString *price;
 
 @property(strong, nonatomic) NSMutableArray *products; //of NSString* objects
 

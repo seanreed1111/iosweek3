@@ -105,7 +105,11 @@
     company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
     
 //    [self asynchGetPriceFromStockTicker:company.ticker];
-    cell.textLabel.text = company.companyname;
+    if (!company.price)
+    {
+        company.price = [[NSMutableString alloc]initWithCapacity:10];
+    }
+    cell.textLabel.text = [company.companyname stringByAppendingFormat:@" %@",company.price];
     cell.imageView.image = [UIImage imageNamed:company.companyimagename];
     return cell;
 }
@@ -241,11 +245,18 @@
 {
     NSLog(@"\nconnection %@DidFinishLoading ",connection);
 //    NSLog(@"Final data is %d bytes: %@",[self.receivedData length],self.receivedData);
-    NSString *string = [[NSString alloc]initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+    NSString *string = [[[NSString alloc]initWithData:self.receivedData encoding:NSUTF8StringEncoding]stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\r"]];
     NSLog(@"\nFinal Data from connection %@ converted to string is \n%@", connection, string);
     
+    NSArray *prices  = [string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+
+    for (int i=0;i<[self.dao.allCompanies count];i++)
+    {
+        [self.dao.allCompanies[i] setPrice:prices[i]];
+    }
     
     connection = nil;
     self.receivedData = nil;
+    [self.tableView reloadData];
 }
 @end
