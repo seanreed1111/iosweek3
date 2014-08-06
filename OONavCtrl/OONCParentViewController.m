@@ -31,22 +31,7 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
-    self.dao = [[OONCDAO alloc]init];
-    
-
-    NSDictionary *microsoftDictionary = @{@"companyname":@"Microsoft",@"companyurl":@"http://microsoft.com", @"companyimagename":@"microsoft-logo.png",@"ticker":@"MSFT",@"products":@[@"Microsoft Product #1", @"Microsoft Product #2", @"Microsoft Product #3"]};
-    NSDictionary *appleDictionary = @{@"companyname":@"Apple",@"companyurl":@"http://apple.com", @"companyimagename":@"apple-logo.jpeg",@"ticker":@"AAPL",@"products":@[@"iPad", @"iPod Touch", @"iPhone"]};
-    NSDictionary *nokiaDictionary = @{@"companyname":@"Nokia",@"companyurl":@"http://nokia.com/us-en/phones/", @"companyimagename":@"nokia-logo.jpg", @"ticker":@"NOK",@"products":@[@"Nokia Product #1", @"Nokia Product #2", @"Nokia Product #3"]};
-    NSDictionary *samsungDictionary = @{@"companyname":@"Samsung",@"companyurl":@"http://samsung.com/us", @"companyimagename":@"samsung-logo.png",@"ticker":@"005930.KS",@"products":@[@"Samsung Product #1", @"Samsung Product #2", @"Samsung Product #3"]};
-    NSDictionary *blackberryDictionary = @{@"companyname":@"Blackberry",@"companyurl":@"http://microsoft.com", @"companyimagename":@"Blackberry-logo.jpg",@"ticker":@"BBRY",@"products":@[@"Blackberry Product #1", @"Blackberry Product #2", @"Blackberry Product #3"]};
-    
-    
-    [self.dao createCompanyWithDictionary:microsoftDictionary];
-    [self.dao createCompanyWithDictionary:appleDictionary];
-    [self.dao createCompanyWithDictionary:nokiaDictionary];
-    [self.dao createCompanyWithDictionary:samsungDictionary];
-    [self.dao createCompanyWithDictionary:blackberryDictionary];
-
+    self.dao = [OONCDAO loadDao];
 }
 
 -(void)viewWillAppear:(BOOL)animated

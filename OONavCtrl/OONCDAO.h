@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSMutableArray *allCompanies; //of OONCCompany objects
 
++ (OONCDAO *)loadDao;
 - (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary;
 
 - (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
@@ -22,6 +23,7 @@
 - (void)deleteCompany:(OONCCompany *)company;
 - (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name; //also make addProduct:(OONCProduct *) toCompany:(OONCCompany*)
 - (void)deleteProduct:(OONCProduct *)product fromCompanyName:(NSString *)name;
+
 
 
 @end
