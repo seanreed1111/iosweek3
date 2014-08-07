@@ -31,17 +31,24 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
-    self.dao = [OONCDAO loadDao];
+    
+    
+    //search for NSUserDefaults. If none present, then loadDao
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self asynchGetPricesFromCompanies:[self.dao allCompanies]];
+    [self asynchGetPricesFromCompanies:[OONCDAO sharedCompanies]];
     
     NSLog(@"\nParentController - viewWillAppear:(BOOL)animated");
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+    NSLog(@"\nParentController - viewWillDisappear:(BOOL)animated");
+}
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
@@ -69,7 +76,7 @@
     NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
     // Return the number of rows in the section.
 
-    return [self.dao.allCompanies count];
+    return [[OONCDAO sharedCompanies]count];
 }
 
 
@@ -87,7 +94,7 @@
 
     //configure the cell
     OONCCompany *company = [[OONCCompany alloc]init];
-    company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
+    company = [[OONCDAO sharedCompanies] objectAtIndex:[indexPath row]];
     
 //    [self asynchGetPriceFromStockTicker:company.ticker];
     if (!company.price)
@@ -106,7 +113,7 @@
 
     
     OONCCompany *company = [[OONCCompany alloc]init];
-    company = [self.dao.allCompanies objectAtIndex:[indexPath row]];
+    company = [[OONCDAO sharedCompanies] objectAtIndex:[indexPath row]];
     self.childVC.company= company;
     
     self.childVC.title  = [company companyname];
@@ -129,7 +136,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.dao.allCompanies removeObjectAtIndex:[indexPath row]];
+        [[OONCDAO sharedCompanies] removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -235,9 +242,9 @@
     
     NSArray *prices  = [string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
 
-    for (int i=0;i<[self.dao.allCompanies count];i++)
+    for (int i=0;i<[[OONCDAO sharedCompanies] count];i++)
     {
-        [self.dao.allCompanies[i] setPrice:prices[i]];
+        [[OONCDAO sharedCompanies][i] setPrice:prices[i]];
     }
     
     connection = nil;

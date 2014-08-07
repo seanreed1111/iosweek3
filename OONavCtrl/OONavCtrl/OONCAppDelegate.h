@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OONCDAO.h"
 
 @interface OONCAppDelegate : UIResponder <UIApplicationDelegate>
 
