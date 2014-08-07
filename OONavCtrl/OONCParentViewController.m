@@ -11,15 +11,15 @@
 
 @implementation OONCParentViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    NSLog(@" (id)initWithStyle:(UITableViewStyle)style");
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//    NSLog(@" (id)initWithStyle:(UITableViewStyle)style");
+//    self = [super initWithStyle:style];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
@@ -96,7 +96,6 @@
     OONCCompany *company = [[OONCCompany alloc]init];
     company = [[OONCDAO sharedCompanies] objectAtIndex:[indexPath row]];
     
-//    [self asynchGetPriceFromStockTicker:company.ticker];
     if (!company.price)
     {
         company.price = [[NSMutableString alloc]initWithCapacity:10];

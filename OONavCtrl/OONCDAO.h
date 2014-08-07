@@ -7,25 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OONCProduct.h"
-#import "OONCCompany.h"
+//#import "OONCProduct.h"
+
 
 @interface OONCDAO : NSObject
 
-@property (strong, nonatomic) NSMutableArray *allCompanies; //of OONCCompany objects
 
-+ (id)sharedCompanies;
-+ (OONCDAO *)loadDao;
++ (NSMutableArray *)sharedCompanies;
 
-- (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary;
+//- (OONCProduct *)createProductWithDictionary:(NSDictionary *)productDictionary;
 
-- (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
+//@property (strong, nonatomic) NSMutableArray *allCompanies; //of OONCCompany objects
 
-- (void)addCompany:(OONCCompany *)company;
-- (void)deleteCompany:(OONCCompany *)company;
-- (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name; //also make addProduct:(OONCProduct *) toCompany:(OONCCompany*)
-- (void)deleteProduct:(OONCProduct *)product fromCompanyName:(NSString *)name;
+//+ (OONCDAO *)loadDao;
+//- (OONCCompany *)createCompanyWithDictionary:(NSDictionary *)companyDictionary;
 
-
-
+//- (void)addCompany:(OONCCompany *)company;
+//- (void)deleteCompany:(OONCCompany *)company;
+//- (void)addProduct:(OONCProduct *)product toCompanyName:(NSString *)name; //also make addProduct:(OONCProduct *) toCompany:(OONCCompany*)
+//- (void)deleteProduct:(OONCProduct *)product fromCompanyName:(NSString *)name;
 @end
