@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"\nParentVC viewDidLoad");
+    NSLog(@"ParentVC viewDidLoad\n");
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.

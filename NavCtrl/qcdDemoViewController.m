@@ -32,7 +32,7 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    NSLog(@"viewDidLoad");
+    NSLog(@"qcdDemoViewController viewDidLoad");
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -56,7 +56,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        NSLog(@"numberOfSectionsInTableView:(UITableView *)tableView");
+        NSLog(@"qcdDemoViewController numberOfSectionsInTableView:(UITableView *)tableView");
 
     // Return the number of sections.
     return 1;
@@ -64,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-            NSLog(@"tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
+            NSLog(@"qcdDemoViewController tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section");
 
     // Return the number of rows in the section.
     return [self.companyList count];
@@ -72,7 +72,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
+    NSLog(@"qcdDemoViewController tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -94,7 +94,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Selected ChildView - now push the proper view to application - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
+    NSLog(@"qcdDemoViewController Selected ChildView - now push the proper view to application - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
     
     
     self.childVC.title = self.companyList[indexPath.row];
@@ -146,7 +146,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    NSLog(@"didReceiveMemoryWarning called");
+    NSLog(@"qcdDemoViewController didReceiveMemoryWarning called");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

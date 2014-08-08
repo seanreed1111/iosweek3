@@ -13,7 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"application didFinishLaunchingWithOptions");
+    NSLog(@"qcdDemoAppDelegate: application didFinishLaunchingWithOptions");
     
     // Override point for customization after application launch.
     UIViewController *rootController =
