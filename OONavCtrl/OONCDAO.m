@@ -40,4 +40,17 @@
     [companies addObject:[OONCCompany createCompanyWithDictionary:blackberryDictionary]];
     return companies;
 }
+
++ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company
+{
+    NSUInteger companyIndex = [[OONCDAO sharedCompanies] indexOfObjectIdenticalTo:company];
+    NSUInteger productIndex = [company.products indexOfObjectIdenticalTo:name];
+    
+    //[OONCDAO sharedCompanies][companyIndex]
+}
+
+//+ (void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company
+//{
+//    
+//}
 @end

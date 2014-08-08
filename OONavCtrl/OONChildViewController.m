@@ -85,26 +85,10 @@
     NSLog(@"\nchildVC:tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath");
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        // call [OONCDAO sharedCompanies] to get the array
-        // select the proper company from this array using self.company
-        // objectAtIndex:indexOfObject:self.company
-        
-        // delete the product at the appropriate index
-        
-        NSLog(@"answer is %lu", (unsigned long)[[OONCDAO sharedCompanies] indexOfObjectIdenticalTo:self.company]);
-        
-        
-        //[self.company.products removeObjectAtIndex:[indexPath row]];
-        NSUInteger index = [[OONCDAO sharedCompanies]indexOfObjectIdenticalTo:self.company];
-        
-        [[OONCDAO sharedCompanies] removeProduct:product fromCompany:company];
-        
-        if([self.company.products respondsToSelector:NSSelectorFromString(@"removeObjectAtIndex")])
-        {
-            [self.company.products removeObjectAtIndex:[indexPath row]];         // Delete row from the data source which is an, an NSMutableArray of OONCCompany object
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        }
+        // delete the product at the appropriate index from DAO
+        [OONCDAO deleteProductNamed:[self.company.products objectAtIndex:[indexPath row]] fromCompany:self.company];
 
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

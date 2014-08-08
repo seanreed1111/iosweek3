@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OONCCompany.h"
 
 
 
@@ -15,4 +16,6 @@
 
 + (NSMutableArray *)sharedCompanies;
 
++ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company;
+//+ (void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company;
 @end
