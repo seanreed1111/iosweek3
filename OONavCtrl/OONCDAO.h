@@ -16,6 +16,6 @@
 
 + (NSMutableArray *)sharedCompanies;
 
-+ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company;
-//+ (void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company;
+//+ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company;
++ (void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company;
 @end

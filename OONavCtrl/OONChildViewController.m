@@ -86,8 +86,9 @@
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         // delete the product at the appropriate index from DAO
-        [OONCDAO deleteProductNamed:[self.company.products objectAtIndex:[indexPath row]] fromCompany:self.company];
-
+        [OONCDAO deleteProductAtIndex:[indexPath row] fromCompany:self.company
+         ];
+        // delete the row from the table
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
