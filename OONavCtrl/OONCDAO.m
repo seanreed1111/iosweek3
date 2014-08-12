@@ -19,7 +19,17 @@
     static dispatch_once_t dispatch_once_token;
     
     dispatch_once(&dispatch_once_token, ^{
-        companies = [OONCDAO loadCompanies];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSData *data =[defaults objectForKey:@"companiesKey"];
+        if (data)
+        {
+            companies = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        }
+        else
+        {
+            companies = [OONCDAO loadCompanies];
+        }
+        
     });
     return companies;
 }

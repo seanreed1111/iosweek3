@@ -10,6 +10,7 @@
 
 @implementation OONCProduct
 
+
 + (OONCProduct *)createProductWithDictionary:(NSDictionary*)productDictionary
 {
     return [[OONCProduct alloc]initProductWithDictionary:productDictionary];
@@ -42,4 +43,25 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:self.productname forKey:@"productname"];
+    [coder encodeObject:self.producturl forKey:@"producturl"];
+    [coder encodeObject:self.productimagename forKey:@"productimagename"];
+    [coder encodeObject:self.productimagepath forKey:@"productimagepath"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    //implement this method
+    self = [super init];
+    if(!self){
+        return nil;
+    }
+    self.productname = [coder decodeObjectForKey:@"productname"];
+    self.producturl = [coder decodeObjectForKey:@"producturl"];
+    self.productimagename = [coder decodeObjectForKey:@"productimagename"];
+    self.productimagepath = [coder decodeObjectForKey:@"productimagepath"];
+    return self;
+}
 @end

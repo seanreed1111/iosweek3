@@ -31,25 +31,13 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
+    [self asynchGetPricesFromCompanies:[OONCDAO sharedCompanies]];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    //search for NSUserDefaults. If none present, then loadDao
     [super viewWillAppear:YES];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    id sharedCompanies = [OONCDAO sharedCompanies];
-    NSData *data = [defaults objectForKey:@"companiesKey"];
-    
-    if(data)
-    {
-        sharedCompanies = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    }
-    
-    [self asynchGetPricesFromCompanies:sharedCompanies];
-    
+
     NSLog(@"\nParentController - viewWillAppear:(BOOL)animated");
 }
 
@@ -247,7 +235,7 @@
 //    NSLog(@"Final data is %d bytes: %@",[self.receivedData length],self.receivedData);
     NSString *string = [[[NSString alloc]initWithData:self.receivedData encoding:NSUTF8StringEncoding]stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\r"]];
     NSLog(@"\nFinal Data from connection %@ converted to string is \n%@", connection, string);
-    
+
     NSArray *prices  = [string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
     NSUInteger count = [[OONCDAO sharedCompanies] count];
 
