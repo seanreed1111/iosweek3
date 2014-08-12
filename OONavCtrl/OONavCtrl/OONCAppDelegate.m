@@ -19,11 +19,16 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 
-    NSLog(@"\ncompanies = %@",[OONCDAO sharedCompanies]);
+
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    id sharedCompanies = [OONCDAO sharedCompanies];
 
-//    [defaults synchronize];
+    NSData *userDefaultData = [NSKeyedArchiver archivedDataWithRootObject:sharedCompanies];
+ 
+    [defaults setObject:userDefaultData forKey:@"companiesKey"];
+
+    [defaults synchronize];
     
 }
 
@@ -33,16 +38,12 @@
 {
     NSLog(@"applicationWillEnterForeground:");
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    
-
-
-    
-
-    NSLog(@"\ncompanies = %@",[OONCDAO sharedCompanies]);
-    //    [defaults synchronize];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    // LOAD NSUserDefaults from DAO here if they exist.
+    id sharedCompanies = [OONCDAO sharedCompanies];
+    NSData *data = [defaults objectForKey:@"companiesKey"];
+    
+    sharedCompanies = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
 }
 

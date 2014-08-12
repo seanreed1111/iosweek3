@@ -9,6 +9,7 @@
 #import "OONCDAO.h"
 #import "OONCCompany.h"
 
+
 @implementation OONCDAO
 
 
@@ -46,13 +47,6 @@
     return companies;
 }
 
-//+ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company
-//{
-//    NSUInteger companyIndex = [[OONCDAO sharedCompanies] indexOfObjectIdenticalTo:company];
-//    NSUInteger productIndex = [company.products indexOfObjectIdenticalTo:name];
-//    
-//    [[[OONCDAO sharedCompanies][companyIndex] products] removeObjectAtIndex:productIndex];
-//}
 
 + (void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company
 {
@@ -64,4 +58,32 @@
     
     NSLog(@"OONCDAO deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company");
 }
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:[OONCDAO sharedCompanies] forKey:@"companiesKey"];
+    
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self  = [super init];
+    
+    if (self)
+    {
+        NSMutableArray *companies = [OONCDAO sharedCompanies];
+        companies = [coder decodeObjectForKey:@"companiesKey"];
+    }
+    
+    return self;
+}
+
+//+ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company
+//{
+//    NSUInteger companyIndex = [[OONCDAO sharedCompanies] indexOfObjectIdenticalTo:company];
+//    NSUInteger productIndex = [company.products indexOfObjectIdenticalTo:name];
+//
+//    [[[OONCDAO sharedCompanies][companyIndex] products] removeObjectAtIndex:productIndex];
+//}
+
 @end

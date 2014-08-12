@@ -48,4 +48,34 @@
     return self;
 
 }
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:self.companyname forKey:@"companyname"];
+    [coder encodeObject:self.companyurl forKey:@"companyurl"];
+    [coder encodeObject:self.companyimagename forKey:@"companyimagename"];
+    [coder encodeObject:self.companyimagepath forKey:@"companyimagepath"];
+    [coder encodeObject:self.ticker forKey:@"ticker"];
+    [coder encodeObject:self.price forKey:@"price"];
+    [coder encodeObject:self.products forKey:@"products"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super init];
+    if (self)
+    {
+        self.companyname = [coder decodeObjectForKey:@"companyname"];
+        self.companyurl = [coder decodeObjectForKey:@"companyurl"];
+        self.companyimagename = [coder decodeObjectForKey:@"companyimagename"];
+        self.companyimagepath = [coder decodeObjectForKey:@"companyimagepath"];
+        self.ticker = [coder decodeObjectForKey:@"ticker"];
+        self.price = [coder decodeObjectForKey:@"price"];
+        self.products = [coder decodeObjectForKey:@"products"];
+    }
+    
+    
+    return self;
+    
+}
 @end

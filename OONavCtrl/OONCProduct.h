@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OONCProduct : NSObject
+@interface OONCProduct : NSObject<NSCoding>
 @property(nonatomic, copy) NSString *productname;
 @property(nonatomic, copy) NSString *producturl;
 @property(nonatomic, copy) NSString * productimagename;

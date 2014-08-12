@@ -11,11 +11,14 @@
 
 
 
-@interface OONCDAO : NSObject
+@interface OONCDAO : NSObject<NSCoding>
 
 
 + (NSMutableArray *)sharedCompanies;
 
 //+ (void)deleteProductNamed:(NSString *)name fromCompany:(OONCCompany *)company;
-+ (void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company;
++(void)deleteProductAtIndex:(NSUInteger)productIndex fromCompany:(OONCCompany *)company;
+-(void)encodeWithCoder:(NSCoder *)coder;
+-(id)initWithCoder:(NSCoder *)coder;
+
 @end

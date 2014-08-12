@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OONCProduct.h"
 
-@interface OONCCompany : NSObject
+@interface OONCCompany : NSObject<NSCoding>
 @property(copy, nonatomic) NSString *companyname;
 @property(copy, nonatomic) NSString *companyurl;
 @property(copy, nonatomic) NSString *companyimagename;

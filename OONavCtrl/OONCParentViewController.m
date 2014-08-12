@@ -31,15 +31,24 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
-    
-    
-    //search for NSUserDefaults. If none present, then loadDao
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //search for NSUserDefaults. If none present, then loadDao
     [super viewWillAppear:YES];
-    [self asynchGetPricesFromCompanies:[OONCDAO sharedCompanies]];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    id sharedCompanies = [OONCDAO sharedCompanies];
+    NSData *data = [defaults objectForKey:@"companiesKey"];
+    
+    if(data)
+    {
+        sharedCompanies = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    [self asynchGetPricesFromCompanies:sharedCompanies];
     
     NSLog(@"\nParentController - viewWillAppear:(BOOL)animated");
 }
@@ -153,7 +162,7 @@
 
 -(void)asynchGetPricesFromCompanies:(NSArray *)companies
 {
-    NSMutableArray *tickers = [[NSMutableArray alloc]init];
+    NSMutableArray *tickers = [[NSMutableArray alloc]initWithCapacity:5];
     for(OONCCompany *company in companies)
     {
         [tickers addObject:company.ticker];
@@ -240,12 +249,15 @@
     NSLog(@"\nFinal Data from connection %@ converted to string is \n%@", connection, string);
     
     NSArray *prices  = [string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    NSUInteger count = [[OONCDAO sharedCompanies] count];
 
     for (int i=0;i<[[OONCDAO sharedCompanies] count];i++)
     {
-        [[OONCDAO sharedCompanies][i] setPrice:prices[i]];
+        if(prices[i])
+        {
+            [[OONCDAO sharedCompanies][i] setPrice:prices[i]];
+        }
     }
-    
     connection = nil;
     self.receivedData = nil;
     [self.tableView reloadData];
