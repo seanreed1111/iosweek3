@@ -27,11 +27,16 @@
         }
         else
         {
-            companies = [OONCDAO loadCompanies];
+            companies =  [OONCDAO loadCompanies];
         }
         
     });
     return companies;
+}
+
++ (void)resetCompanies;
+{
+    //implement this method
 }
 
 + (NSMutableArray *)loadCompanies
@@ -72,7 +77,6 @@
 - (void)encodeWithCoder:(NSCoder *)coder
 {
     [coder encodeObject:[OONCDAO sharedCompanies] forKey:@"companiesKey"];
-    
 }
 
 - (id)initWithCoder:(NSCoder *)coder

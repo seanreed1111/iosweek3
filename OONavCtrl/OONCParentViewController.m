@@ -31,13 +31,13 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.title = @"Mobile Device Makers";
-    [self asynchGetPricesFromCompanies:[OONCDAO sharedCompanies]];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-
+    [self asynchGetPricesFromCompanies:[OONCDAO sharedCompanies]];
     NSLog(@"\nParentController - viewWillAppear:(BOOL)animated");
 }
 
@@ -57,6 +57,18 @@
     NSLog(@"\nparentVC:didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *originalCompanies = [OONCDAO loadCompanies];
+    NSData *userDefaultData = [NSKeyedArchiver archivedDataWithRootObject:originalCompanies];     //reload all companies, overriding current NSUserDefaults
+    [defaults setObject:userDefaultData forKey:@"companiesKey"];
+    [defaults synchronize];
+    
+    NSMutableArray *sharedCompanies = [OONCDAO sharedCompanies];
+    [sharedCompanies removeAllObjects];
+    [sharedCompanies addObjectsFromArray:originalCompanies];
+    [self asynchGetPricesFromCompanies:sharedCompanies]; //also reloads tableview
 }
 
 #pragma mark - Table view data source
@@ -237,7 +249,6 @@
     NSLog(@"\nFinal Data from connection %@ converted to string is \n%@", connection, string);
 
     NSArray *prices  = [string componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\n"]];
-    NSUInteger count = [[OONCDAO sharedCompanies] count];
 
     for (int i=0;i<[[OONCDAO sharedCompanies] count];i++)
     {
